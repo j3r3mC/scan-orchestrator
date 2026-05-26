@@ -1,8 +1,11 @@
-export type TaskType = "crawl" | "attack" | "analyze" | "normalize";
+import { TaskType } from "./TaskType";
+import { TaskPayloadMap } from "./TaskPayloadMap";
 
-export interface Task {
-  id: string;
-  type: TaskType;
-  payload: unknown;
-  createdAt: number;
-}
+export type Task = {
+  [K in TaskType]: {
+    id: string;
+    type: K;
+    payload: TaskPayloadMap[K];
+    createdAt: number;
+  };
+}[TaskType];
