@@ -6,7 +6,6 @@ describe("TaskType (success)", () => {
       "crawl:page",
       "crawl:assets",
       "crawl:form",
-      "crawl:api",
       "attack:sqli:timebased",
       "attack:sqli:errorbased",
       "attack:xss:reflected",
