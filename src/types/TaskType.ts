@@ -3,7 +3,6 @@ export type TaskType =
   | "crawl:page"
   | "crawl:assets"
   | "crawl:form"
-  | "crawl:api"
 
   // Attacks
   | "attack:sqli:timebased"

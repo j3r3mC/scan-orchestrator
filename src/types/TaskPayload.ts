@@ -1,15 +1,18 @@
-import { CrawlPagePayload } from "./CrawlPayload";
+import { CrawlPagePayload } from "./CrawlPagePayload";
+import { CrawlAssetsPayload } from "./CrawlAssetsPayload";
+import { CrawlFormPayload } from "./CrawlFormPayload";
+
 import { AttackPayload } from "./AttackPayload";
 import { AnalyzePayload } from "./AnalyzePayload";
 import { NormalizePayload } from "./NormalizePayload";
+
 import { TaskType } from "./TaskType";
 
 export type TaskPayloadMap = {
   // Crawl
   "crawl:page": CrawlPagePayload;
-  "crawl:assets": CrawlPagePayload;
-  "crawl:form": CrawlPagePayload;
-  "crawl:api": CrawlPagePayload;
+  "crawl:assets": CrawlAssetsPayload;
+  "crawl:form": CrawlFormPayload;
 
   // Attack
   "attack:sqli:timebased": AttackPayload;
