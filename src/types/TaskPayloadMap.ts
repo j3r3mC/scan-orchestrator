@@ -38,5 +38,4 @@ export type TaskPayloadMap = {
   "normalize:context": NormalizePayload;
   "normalize:assets": NormalizeAssetsPayload;
 };
-
 export type TaskPayload = TaskPayloadMap[TaskType];
