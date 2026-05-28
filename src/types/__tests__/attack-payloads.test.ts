@@ -1,8 +1,8 @@
-import { SqliTimePayload } from "../attack/SqliTimePayload";
-import { SqliErrorPayload } from "../attack/SqliErrorPayload";
-import { XxePayload } from "../attack/XxePayload";
-import { RcePayload } from "../attack/RcePayload";
-import { PathTraversalPayload } from "../attack/PathTraversalPayload";
+import { SqliTimePayload } from "../attack/server/SqliTimePayload";
+import { SqliErrorPayload } from "../attack/server/SqliErrorPayload";
+import { XxePayload } from "../attack/server/XxePayload";
+import { RcePayload } from "../attack/server/RcePayload";
+import { PathTraversalPayload } from "../attack/server/PathTraversalPayload";
 
 describe("Attack payloads typing", () => {
   test("SqliTimePayload requires delay", () => {
@@ -10,11 +10,11 @@ describe("Attack payloads typing", () => {
       url: "http://test",
       method: "GET",
       headers: {},
-      vector: "' OR SLEEP(5) --",
-      delay: 5,
+      vector: "' OR SLEEP(5)--",
+      delay: 5000,
     };
 
-    expect(payload.delay).toBe(5);
+    expect(payload.delay).toBe(5000);
   });
 
   test("SqliErrorPayload requires errorSignature", () => {
@@ -34,7 +34,7 @@ describe("Attack payloads typing", () => {
       url: "http://test",
       method: "POST",
       headers: {},
-      vector: "<!DOCTYPE foo>",
+      vector: '<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>',
       xmlPayload: "<!DOCTYPE foo>",
     };
 
@@ -46,11 +46,11 @@ describe("Attack payloads typing", () => {
       url: "http://test",
       method: "POST",
       headers: {},
-      vector: "id",
-      command: "id",
+      vector: "ls -la",
+      command: "ls -la",
     };
 
-    expect(payload.command).toBe("id");
+    expect(payload.command).toBe("ls -la");
   });
 
   test("PathTraversalPayload requires filePath", () => {

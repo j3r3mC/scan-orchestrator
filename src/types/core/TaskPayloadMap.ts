@@ -3,18 +3,18 @@ import { CrawlAssetsPayload } from "../crawls/CrawlAssetsPayload";
 import { CrawlFormPayload } from "../crawls/CrawlFormPayload";
 import { CrawlApiPayload } from "../crawls/CrawlApiPayload";
 
-import { SqliTimePayload } from "../attack/SqliTimePayload";
-import { SqliErrorPayload } from "../attack/SqliErrorPayload";
-import { XssReflectedPayload } from "../attack/XssReflectedPayload";
-import { XssStoredPayload } from "../attack/XssStoredPayload";
-import { LfiPayload } from "../attack/LfiPayload";
-import { RfiPayload } from "../attack/RfiPayload";
-import { HeadersPayload } from "../attack/HeadersPayload";
-import { OpenRedirectPayload } from "../attack/OpenRedirectPayload";
+import { SqliTimePayload } from "../attack/server/SqliTimePayload";
+import { SqliErrorPayload } from "../attack/server/SqliErrorPayload";
+import { XssReflectedPayload } from "../attack/client/XssReflectedPayload";
+import { XssStoredPayload } from "../attack/client/XssStoredPayload";
+import { LfiPayload } from "../attack/server/LfiPayload";
+import { RfiPayload } from "../attack/server/RfiPayload";
+import { HeadersPayload } from "../attack/server/HeadersPayload";
+import { OpenRedirectPayload } from "../attack/client/OpenRedirectPayload";
 
-import { XxePayload } from "../attack/XxePayload";
-import { RcePayload } from "../attack/RcePayload";
-import { PathTraversalPayload } from "../attack/PathTraversalPayload";
+import { XxePayload } from "../attack/server/XxePayload";
+import { RcePayload } from "../attack/server/RcePayload";
+import { PathTraversalPayload } from "../attack/server/PathTraversalPayload";
 
 import { AnalyzePayload } from "../analyze/AnalyzePayload";
 import { AnalyzeJsPayload } from "../analyze/AnalyzeJsPayload";
@@ -24,7 +24,7 @@ import { NormalizeAttackPayload } from "../normalize/NormalizeAttackPayload";
 import { NormalizeContextPayload } from "../normalize/NormalizeContextPayload";
 
 import { TaskType } from "./TaskType";
-import { SsrfPayload } from "../attack/SsrfPayload";
+import { SsrfPayload } from "../attack/server/SsrfPayload";
 
 export type TaskPayloadMap = {
   // Crawl
