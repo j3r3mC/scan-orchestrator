@@ -1,30 +1,31 @@
-export type TaskType =
+export enum TaskType {
   // Crawl
-  | "crawl:page"
-  | "crawl:assets"
-  | "crawl:form"
-  | "crawl:api"
-
-  // Attacks
-  | "attack:sqli:timebased"
-  | "attack:sqli:errorbased"
-  | "attack:xss:reflected"
-  | "attack:xss:stored"
-  | "attack:lfi"
-  | "attack:rfi"
-  | "attack:headers"
-  | "attack:openredirect"
-  | "attack:xxe"
-  | "attack:rce"
-  | "attack:pathtraversal"
-  | "attack:ssrf"
+  CRAWL_PAGE = "crawl:page",
+  CRAWL_ASSETS = "crawl:assets",
+  CRAWL_FORM = "crawl:form",
+  CRAWL_API = "crawl:api",
 
   // Analyze
-  | "analyze:http"
-  | "analyze:dom"
-  | "analyze:js"
+  ANALYZE_HTTP = "analyze:http",
+  ANALYZE_DOM = "analyze:dom",
+
+  // Attack (server)
+  ATTACK_HEADERS = "attack:headers",
+  ATTACK_LFI = "attack:lfi",
+  ATTACK_RFI = "attack:rfi",
+  ATTACK_SQLI_ERROR = "attack:sqli:error",
+  ATTACK_SQLI_TIME = "attack:sqli:time",
+  ATTACK_PATH_TRAVERSAL = "attack:pathtraversal",
+  ATTACK_RCE = "attack:rce",
+  ATTACK_XXE = "attack:xxe",
+  ATTACK_SSRF = "attack:ssrf",
+
+  // Attack (client)
+  ATTACK_XSS_REFLECTED = "attack:xss:reflected",
+  ATTACK_XSS_STORED = "attack:xss:stored",
 
   // Normalize
-  | "normalize:attack"
-  | "normalize:context"
-  | "normalize:assets";
+  NORMALIZE_CONTEXT = "normalize:context",
+  NORMALIZE_ATTACK = "normalize:attack",
+  NORMALIZE_ASSETS = "normalize:assets",
+}

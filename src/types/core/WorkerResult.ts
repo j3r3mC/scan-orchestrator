@@ -10,7 +10,7 @@ export interface WorkerFinding {
 }
 
 export interface WorkerResult {
-  taskId: string;
+  taskId?: string;
   taskType: TaskType;
 
   status: WorkerStatus;
