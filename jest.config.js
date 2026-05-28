@@ -8,4 +8,7 @@ module.exports = {
   transform: {
     ...tsJestTransformCfg,
   },
+
+  // ⭐ Correction essentielle
+  testPathIgnorePatterns: ["/node_modules/", "/dist/"],
 };
