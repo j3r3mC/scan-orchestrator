@@ -1,4 +1,4 @@
-import { Task } from "../Task";
+import { Task } from "../core/Task";
 
 describe("Task (success)", () => {
   it("creates a valid task object", () => {

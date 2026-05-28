@@ -1,5 +1,4 @@
-import { TaskType } from "./TaskType";
-import { Task } from "./Task";
+import { TaskType, Task } from "@/types/core";
 
 export type WorkerStatus = "success" | "error";
 

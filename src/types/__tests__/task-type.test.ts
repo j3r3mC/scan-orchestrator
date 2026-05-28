@@ -1,4 +1,4 @@
-import { TaskType } from "../TaskType";
+import { TaskType } from "../core/TaskType";
 
 describe("TaskType (success)", () => {
   it("accepte tous les TaskType valides", () => {

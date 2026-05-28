@@ -1,5 +1,4 @@
-import { Task } from "./Task";
-import { TaskType } from "./TaskType";
+import { Task, TaskType } from "@/types/core";
 
 export type ScanStatus = "pending" | "running" | "completed" | "failed";
 
