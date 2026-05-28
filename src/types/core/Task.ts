@@ -1,5 +1,4 @@
-import { TaskType } from "./TaskType";
-import { TaskPayloadMap } from "./TaskPayloadMap";
+import { TaskType, TaskPayloadMap } from "@/types/core";
 
 export type Task = {
   [K in TaskType]: {

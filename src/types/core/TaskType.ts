@@ -14,6 +14,9 @@ export type TaskType =
   | "attack:rfi"
   | "attack:headers"
   | "attack:openredirect"
+  | "attack:xxe"
+  | "attack:rce"
+  | "attack:pathtraversal"
 
   // Analyze
   | "analyze:http"
@@ -24,10 +27,3 @@ export type TaskType =
   | "normalize:attack"
   | "normalize:context"
   | "normalize:assets";
-
-export interface Task {
-  id: string;
-  type: TaskType;
-  payload: unknown;
-  createdAt: number;
-}

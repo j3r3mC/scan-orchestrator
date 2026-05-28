@@ -1,4 +1,4 @@
-import { TaskPayloadMap } from "../TaskPayloadMap";
+import { TaskPayloadMap } from "../core/TaskPayloadMap";
 
 describe("TaskPayloadMap", () => {
   it("accepte les bons payloads pour chaque TaskType", () => {
@@ -24,13 +24,14 @@ describe("TaskPayloadMap", () => {
       isInline: false,
       metadata: { size: 1234 },
     };
-
     const attack: TaskPayloadMap["attack:sqli:timebased"] = {
-      url: "https://test.com",
+      url: "http://test",
       method: "GET",
       headers: {},
       body: {},
       query: {},
+      vector: "' OR SLEEP(5) --",
+      delay: 5,
     };
 
     const analyze: TaskPayloadMap["analyze:http"] = {
@@ -52,11 +53,13 @@ describe("TaskPayloadMap", () => {
     };
 
     const openRedirect: TaskPayloadMap["attack:openredirect"] = {
-      url: "https://test.com",
+      url: "http://test",
       method: "GET",
       headers: {},
       body: {},
       query: {},
+      vector: "https://evil.com",
+      redirectUrl: "https://evil.com",
     };
 
     expect(page.url).toBe("https://test.com");
@@ -64,7 +67,7 @@ describe("TaskPayloadMap", () => {
     expect(js.url).toBe("https://test.com/app.js");
     expect(js.code).toContain("console.log");
     expect(normAssets.rawAssets).toEqual([]);
-    expect(openRedirect.url).toBe("https://test.com");
+    expect(openRedirect.url).toBe("http://test");
   });
 
   it("rejette un mauvais payload pour un TaskType", () => {
