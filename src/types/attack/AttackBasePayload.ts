@@ -1,4 +1,4 @@
-import { SecurityContextPayload } from "../core/SecurityContextPayload";
+import { SecurityContextPayload } from "@/types/core";
 
 export interface AttackBasePayload extends SecurityContextPayload {
   vector: string; // payload injecté
