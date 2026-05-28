@@ -15,3 +15,4 @@ export * from "./OpenRedirectPayload";
 export * from "./XxePayload";
 export * from "./RcePayload";
 export * from "./PathTraversalPayload";
+export * from "./SsrfPayload";

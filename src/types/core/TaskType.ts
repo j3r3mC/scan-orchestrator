@@ -17,6 +17,7 @@ export type TaskType =
   | "attack:xxe"
   | "attack:rce"
   | "attack:pathtraversal"
+  | "attack:ssrf"
 
   // Analyze
   | "analyze:http"

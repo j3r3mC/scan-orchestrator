@@ -61,7 +61,15 @@ describe("TaskPayloadMap", () => {
       vector: "https://evil.com",
       redirectUrl: "https://evil.com",
     };
+    const ssrf: TaskPayloadMap["attack:ssrf"] = {
+      url: "https://target.com",
+      callbackUrl: "https://oast.me/abc123",
+      method: "GET",
+      headers: {},
+      query: {},
+    };
 
+    expect(ssrf.callbackUrl).toContain("oast");
     expect(page.url).toBe("https://test.com");
     expect(api.baseUrl).toBe("https://api.test.com");
     expect(js.url).toBe("https://test.com/app.js");

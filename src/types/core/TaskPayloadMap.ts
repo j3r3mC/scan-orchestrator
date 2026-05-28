@@ -24,6 +24,7 @@ import { NormalizeAttackPayload } from "../normalize/NormalizeAttackPayload";
 import { NormalizeContextPayload } from "../normalize/NormalizeContextPayload";
 
 import { TaskType } from "./TaskType";
+import { SsrfPayload } from "../attack/SsrfPayload";
 
 export type TaskPayloadMap = {
   // Crawl
@@ -41,6 +42,7 @@ export type TaskPayloadMap = {
   "attack:rfi": RfiPayload;
   "attack:headers": HeadersPayload;
   "attack:openredirect": OpenRedirectPayload;
+  "attack:ssrf": SsrfPayload;
 
   // New attacks
   "attack:xxe": XxePayload;
