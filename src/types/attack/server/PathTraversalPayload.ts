@@ -1,4 +1,4 @@
-import { AttackBasePayload } from "./AttackBasePayload";
+import { AttackBasePayload } from "../common/AttackBasePayload";
 
 export interface PathTraversalPayload extends AttackBasePayload {
   filePath: string; // ex: "../../../../etc/passwd"
