@@ -3,40 +3,37 @@ import { TaskType } from "../core/TaskType";
 describe("TaskType (success)", () => {
   it("accepte tous les TaskType valides", () => {
     const validTypes: TaskType[] = [
-      "crawl:page",
-      "crawl:assets",
-      "crawl:form",
-      "attack:sqli:timebased",
-      "attack:sqli:errorbased",
-      "attack:xss:reflected",
-      "attack:xss:stored",
-      "attack:lfi",
-      "attack:rfi",
-      "analyze:http",
-      "analyze:dom",
-      "analyze:js",
-      "normalize:attack",
-      "normalize:context",
-      "normalize:assets",
+      TaskType.CRAWL_PAGE,
+      TaskType.CRAWL_ASSETS,
+      TaskType.CRAWL_FORM,
+      TaskType.CRAWL_API,
+
+      TaskType.ANALYZE_HTTP,
+      TaskType.ANALYZE_DOM,
+
+      TaskType.ATTACK_HEADERS,
+      TaskType.ATTACK_LFI,
+      TaskType.ATTACK_RFI,
+      TaskType.ATTACK_SQLI_ERROR,
+      TaskType.ATTACK_SQLI_TIME,
+      TaskType.ATTACK_PATH_TRAVERSAL,
+      TaskType.ATTACK_RCE,
+      TaskType.ATTACK_XXE,
+      TaskType.ATTACK_SSRF,
+
+      TaskType.ATTACK_XSS_REFLECTED,
+      TaskType.ATTACK_XSS_STORED,
+
+      TaskType.NORMALIZE_ATTACK,
+      TaskType.NORMALIZE_CONTEXT,
+      TaskType.NORMALIZE_ASSETS,
     ];
 
     expect(validTypes.length).toBeGreaterThan(0);
   });
 
   it("accepte crawl:api comme TaskType valide", () => {
-    const type: TaskType = "crawl:api";
-    expect(type).toBe("crawl:api");
-  });
-  it("accepte analyze:js comme TaskType valide", () => {
-    const type: TaskType = "analyze:js";
-    expect(type).toBe("analyze:js");
-  });
-  it("accepte normalize:assets comme TaskType valide", () => {
-    const type: TaskType = "normalize:assets";
-    expect(type).toBe("normalize:assets");
-  });
-  it("accepte attack:openredirect comme TaskType valide", () => {
-    const type: TaskType = "attack:openredirect";
-    expect(type).toBe("attack:openredirect");
+    const type: TaskType = TaskType.CRAWL_API;
+    expect(type).toBe(TaskType.CRAWL_API);
   });
 });

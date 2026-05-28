@@ -1,14 +1,15 @@
+import { TaskType } from "../core/TaskType";
 import { Task } from "../core/Task";
 
 describe("Task (success)", () => {
   it("creates a valid task object", () => {
     const task: Task = {
       id: "123",
-      type: "crawl:page",
+      type: TaskType.CRAWL_PAGE,
       payload: { url: "https://example.com" },
       createdAt: Date.now(),
     };
 
-    expect(task.type).toBe("crawl:page");
+    expect(task.type).toBe(TaskType.CRAWL_PAGE);
   });
 });
