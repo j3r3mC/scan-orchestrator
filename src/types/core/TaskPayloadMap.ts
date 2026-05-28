@@ -42,7 +42,7 @@ export type TaskPayloadMap = {
   [TaskType.ANALYZE_DOM]: AnalyzeJsPayload;
 
   // Attack (server)
-  [TaskType.ATTACK_HEADERS]: HeadersPayload;
+  [TaskType.ATTACK_HEADERS]: AnalyzePayload; // ou SecurityContextPayload si tu préfères
   [TaskType.ATTACK_LFI]: LfiPayload;
   [TaskType.ATTACK_RFI]: RfiPayload;
   [TaskType.ATTACK_SQLI_ERROR]: SqliErrorPayload;
