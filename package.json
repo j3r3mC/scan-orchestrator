@@ -1,5 +1,5 @@
 {
-  "name": "@j3r3mcdev/scan-orchestrator",
+  "name": "@j3r3my/scan-orchestrator",
   "version": "1.0.0",
   "description": "Modular security scan orchestrator with typed workers and normalization pipeline.",
   "main": "dist/index.js",
