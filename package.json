@@ -1,4 +1,17 @@
 {
+  "name": "@j3r3mcdev/scan-orchestrator",
+  "version": "1.0.0",
+  "description": "Modular security scan orchestrator with typed workers and normalization pipeline.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "test": "jest --passWithNoTests"
+  },
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^25.9.1",
@@ -8,9 +21,13 @@
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
   },
-  "scripts": {
-    "clean": "rimraf dist",
-    "build": "npm run clean && tsc -p tsconfig.json",
-    "test": "jest --passWithNoTests"
-  }
+  "keywords": [
+    "security",
+    "scanner",
+    "orchestrator",
+    "waf",
+    "typescript"
+  ],
+  "author": "Jérémy",
+  "license": "MIT"
 }
