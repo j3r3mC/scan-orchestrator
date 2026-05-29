@@ -29,7 +29,7 @@ describe("TaskPayloadMap", () => {
       headers: {},
       body: "",
       query: {},
-      response: { status: 200, body: "" },
+      response: { status: 200, headers: {}, body: "" },
     };
 
     const analyzeDom: TaskPayloadMap[TaskType.ANALYZE_DOM] = {
@@ -57,6 +57,22 @@ describe("TaskPayloadMap", () => {
       query: {},
       vector: "' OR 1=1--",
       errorSignature: "SQL syntax error",
+    };
+
+    const sqliBoolean: TaskPayloadMap[TaskType.ATTACK_SQLI_BOOLEAN] = {
+      url: "https://test.com",
+      method: "GET",
+      headers: {},
+      body: {},
+      query: { q: "' OR '1'='1" },
+    };
+
+    const sqliUnion: TaskPayloadMap[TaskType.ATTACK_SQLI_UNION] = {
+      url: "https://test.com",
+      method: "GET",
+      headers: {},
+      body: {},
+      query: { q: "UNION SELECT 1,2" },
     };
 
     const xssReflected: TaskPayloadMap[TaskType.ATTACK_XSS_REFLECTED] = {
@@ -102,6 +118,7 @@ describe("TaskPayloadMap", () => {
       rawFindings: [],
       context: {},
     };
+
     const normalizeContext: TaskPayloadMap[TaskType.NORMALIZE_CONTEXT] = {
       context: {},
     };

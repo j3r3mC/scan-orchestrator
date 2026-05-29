@@ -1,13 +1,14 @@
 import { AnalyzePayload } from "@/types/analyze";
 import { TaskType, WorkerFinding, WorkerResult } from "@/types/core";
 
-const XSS_PATTERNS = [
-  /<script.*?>/i,
-  /onerror\s*=/i,
-  /onload\s*=/i,
-  /javascript:/i,
-  /<img[^>]+onerror/i,
-  /<svg[^>]+onload/i,
+const BOOLEAN_PATTERNS = [
+  /'\s*or\s*'1'\s*=\s*'1/i,
+  /"\s*or\s*"1"\s*=\s*"1/i,
+  /\sor\s1=1/i,
+  /\sand\s1=1/i,
+  /\sand\s1=2/i,
+  /\sor\s'[^']*'\s*=\s*'[^']*'/i,
+  /\sor\strue--/i,
 ];
 
 function normalize(value: unknown): string {
@@ -19,38 +20,40 @@ function normalize(value: unknown): string {
   }
 }
 
-function detectXss(value: unknown): boolean {
+function detectBooleanSqli(value: unknown): boolean {
   const str = normalize(value);
-  return XSS_PATTERNS.some((r) => r.test(str));
+  return BOOLEAN_PATTERNS.some((regex) => regex.test(str));
 }
 
 export async function worker(payload: AnalyzePayload): Promise<WorkerResult> {
   const findings: WorkerFinding[] = [];
 
-  const { query, body } = payload;
+  const { query, body, headers } = payload;
 
   const allValues = [
     ...Object.values(query ?? {}),
     ...Object.values(body ?? {}),
+    ...Object.values(headers ?? {}),
   ];
 
-  const hasXss = allValues.some((v) => detectXss(v));
+  const hasBoolean = allValues.some((v) => detectBooleanSqli(v));
 
-  if (hasXss) {
+  if (hasBoolean) {
     findings.push({
-      message: "Possible Reflected XSS detected",
-      severity: "high",
-      taskType: TaskType.ATTACK_XSS_REFLECTED,
+      message:
+        "Possible SQL Injection (Boolean-Based) detected in request parameters",
+      severity: "critical",
+      taskType: TaskType.ATTACK_SQLI_BOOLEAN,
     });
   }
 
   return {
-    taskType: TaskType.ATTACK_XSS_REFLECTED,
+    taskType: TaskType.ATTACK_SQLI_BOOLEAN,
     status: "success",
     findings,
     output: {
       scannedValues: allValues.length,
-      detected: hasXss,
+      detected: hasBoolean,
     },
   };
 }
