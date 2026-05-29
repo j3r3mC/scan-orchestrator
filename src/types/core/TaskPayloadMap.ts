@@ -20,6 +20,7 @@ import { PathTraversalPayload } from "../attack/server/PathTraversalPayload";
 import { RcePayload } from "../attack/server/RcePayload";
 import { XxePayload } from "../attack/server/XxePayload";
 import { SsrfPayload } from "../attack/server/SsrfPayload";
+import { SqliUnionPayload } from "../attack/server/SqliUnionPayload";
 
 // Attack (client)
 import { XssReflectedPayload } from "../attack/client/XssReflectedPayload";
@@ -47,6 +48,7 @@ export type TaskPayloadMap = {
   [TaskType.ATTACK_RFI]: RfiPayload;
   [TaskType.ATTACK_SQLI_ERROR]: SqliErrorPayload;
   [TaskType.ATTACK_SQLI_TIME]: SqliTimePayload;
+  [TaskType.ATTACK_SQLI_UNION]: SqliUnionPayload;
   [TaskType.ATTACK_PATH_TRAVERSAL]: PathTraversalPayload;
   [TaskType.ATTACK_RCE]: RcePayload;
   [TaskType.ATTACK_XXE]: XxePayload;

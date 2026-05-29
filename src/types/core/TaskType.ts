@@ -15,6 +15,7 @@ export enum TaskType {
   ATTACK_RFI = "attack:rfi",
   ATTACK_SQLI_ERROR = "attack:sqli:error",
   ATTACK_SQLI_TIME = "attack:sqli:time",
+  ATTACK_SQLI_UNION = "attack:sqli:union", // ← AJOUT ICI
   ATTACK_PATH_TRAVERSAL = "attack:pathtraversal",
   ATTACK_RCE = "attack:rce",
   ATTACK_XXE = "attack:xxe",

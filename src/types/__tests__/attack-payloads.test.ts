@@ -1,5 +1,6 @@
 import { SqliTimePayload } from "../attack/server/SqliTimePayload";
 import { SqliErrorPayload } from "../attack/server/SqliErrorPayload";
+import { SqliUnionPayload } from "../attack/server/SqliUnionPayload";
 import { XxePayload } from "../attack/server/XxePayload";
 import { RcePayload } from "../attack/server/RcePayload";
 import { PathTraversalPayload } from "../attack/server/PathTraversalPayload";
@@ -63,5 +64,16 @@ describe("Attack payloads typing", () => {
     };
 
     expect(payload.filePath).toBe("../../../../etc/passwd");
+  });
+
+  test("SqliUnionPayload inherits SecurityContextPayload", () => {
+    const payload: SqliUnionPayload = {
+      url: "http://test",
+      method: "GET",
+      headers: {},
+      query: { id: "1 UNION SELECT 1,2" },
+    };
+
+    expect(payload.query!.id).toBe("1 UNION SELECT 1,2");
   });
 });
