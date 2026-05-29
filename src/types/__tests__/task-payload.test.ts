@@ -59,6 +59,22 @@ describe("TaskPayloadMap", () => {
       errorSignature: "SQL syntax error",
     };
 
+    const sqliBoolean: TaskPayloadMap[TaskType.ATTACK_SQLI_BOOLEAN] = {
+      url: "https://test.com",
+      method: "GET",
+      headers: {},
+      body: {},
+      query: { q: "' OR '1'='1" },
+    };
+
+    const sqliUnion: TaskPayloadMap[TaskType.ATTACK_SQLI_UNION] = {
+      url: "https://test.com",
+      method: "GET",
+      headers: {},
+      body: {},
+      query: { q: "UNION SELECT 1,2" },
+    };
+
     const xssReflected: TaskPayloadMap[TaskType.ATTACK_XSS_REFLECTED] = {
       url: "https://test.com",
       method: "GET",
@@ -102,6 +118,7 @@ describe("TaskPayloadMap", () => {
       rawFindings: [],
       context: {},
     };
+
     const normalizeContext: TaskPayloadMap[TaskType.NORMALIZE_CONTEXT] = {
       context: {},
     };

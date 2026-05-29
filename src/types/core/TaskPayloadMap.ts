@@ -21,6 +21,7 @@ import { RcePayload } from "../attack/server/RcePayload";
 import { XxePayload } from "../attack/server/XxePayload";
 import { SsrfPayload } from "../attack/server/SsrfPayload";
 import { SqliUnionPayload } from "../attack/server/SqliUnionPayload";
+import { SqliStackedPayload } from "../attack/server/SqliStackedPayload";
 
 // Attack (client)
 import { XssReflectedPayload } from "../attack/client/XssReflectedPayload";
@@ -30,6 +31,8 @@ import { XssStoredPayload } from "../attack/client/XssStoredPayload";
 import { NormalizeAttackPayload } from "../normalize/NormalizeAttackPayload";
 import { NormalizeContextPayload } from "../normalize/NormalizeContextPayload";
 import { NormalizeAssetsPayload } from "../normalize/NormalizeAssetsPayload";
+import { SqliBooleanPayload } from "../attack/server/SqliBooleanPayload";
+import { OpenRedirectPayload } from "../attack/server/OpenRedirectPayload";
 
 export type TaskPayloadMap = {
   // Crawl
@@ -50,9 +53,13 @@ export type TaskPayloadMap = {
   [TaskType.ATTACK_SQLI_TIME]: SqliTimePayload;
   [TaskType.ATTACK_SQLI_UNION]: SqliUnionPayload;
   [TaskType.ATTACK_PATH_TRAVERSAL]: PathTraversalPayload;
+  [TaskType.ATTACK_SQLI_BOOLEAN]: SqliBooleanPayload;
+  [TaskType.ATTACK_SQLI_STACKED]: SqliStackedPayload;
+
   [TaskType.ATTACK_RCE]: RcePayload;
   [TaskType.ATTACK_XXE]: XxePayload;
   [TaskType.ATTACK_SSRF]: SsrfPayload;
+  [TaskType.ATTACK_OPEN_REDIRECT]: OpenRedirectPayload;
 
   // Attack (client)
   [TaskType.ATTACK_XSS_REFLECTED]: XssReflectedPayload;
