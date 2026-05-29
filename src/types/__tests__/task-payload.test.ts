@@ -29,7 +29,7 @@ describe("TaskPayloadMap", () => {
       headers: {},
       body: "",
       query: {},
-      response: { status: 200, body: "" },
+      response: { status: 200, headers: {}, body: "" },
     };
 
     const analyzeDom: TaskPayloadMap[TaskType.ANALYZE_DOM] = {
